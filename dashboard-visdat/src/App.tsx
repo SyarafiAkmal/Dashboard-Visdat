@@ -1,5 +1,6 @@
 import './App.css';
 import IndonesiaChoropleth from './components/IndonesiaChoropleth';
+import ChartCard from './components/ChartCard';
 
 function App() {
   return (
@@ -33,10 +34,10 @@ function App() {
         {/* RIGHT */}
         <section className="right-panel">
           <div className="chart-grid">
-            <div className="card chart-card" />
-            <div className="card chart-card" />
-            <div className="card chart-card" />
-            <div className="card chart-card" />
+            <ChartCard title="Population Trend" />
+            <ChartCard title="Risk Analysis" />
+            <ChartCard title="Temperature" />
+            <ChartCard title="Prediction" />
           </div>
 
           <div className="card bottom-right-card" />

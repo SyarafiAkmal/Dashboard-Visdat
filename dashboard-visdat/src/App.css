@@ -672,3 +672,44 @@ body {
   color: #888;
   font-family: 'Georgia', serif;
 }
+
+.umr-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #deded6;
+}
+
+/* SEARCH DROPDOWN */
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #f4f4f0;
+  border: 1px solid #deded6;
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.search-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.search-suggestion:hover {
+  background: #efefea;
+}
+
+.suggestion-icon {
+  color: #b5721a;
+  flex-shrink: 0;
+}

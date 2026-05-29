@@ -3,11 +3,13 @@ import IndonesiaChoropleth from './components/IndonesiaChoropleth';
 import ChartCard from './components/ChartCard';
 import Modal from './components/Modal';
 import StatCards from './components/StatCards';
-import { ExternalLink, Search, BarChart2, TrendingUp, TrendingDown, Users } from "lucide-react";
+import SearchBar from './components/SearchBar';
+import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 function App() {
   const [showPovertyModal, setShowPovertyModal] = useState(false);
+  const [showInsightModal, setShowInsightModal] = useState(false);
 
   return (
     <div className="dashboard">
@@ -17,14 +19,7 @@ function App() {
           <h1 className="header-heading">Dashboard Visualisasi Potret Kemiskinan: Mencari Akar Masalah</h1>
         </div>
 
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search province..."
-            className="search-input"
-          />
-          <Search size={16} className="search-icon" />
-        </div>
+        <SearchBar />
       </header>
 
       <main className="content-grid">
@@ -148,6 +143,12 @@ function App() {
                     <span key={t} className="umr-tick">{t}</span>
                   ))}
                 </div>
+                <div className="umr-footer">
+                  <button className="legend-btn" onClick={() => setShowInsightModal(true)}>
+                    Chart Insight
+                    <ExternalLink size={11} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -185,6 +186,40 @@ function App() {
             dalam memenuhi kebutuhan dasar, baik berupa makanan maupun non-makanan. Penduduk yang
             rata-rata pengeluaran per kapita per bulannya berada di bawah garis tersebut
             dikategorikan sebagai penduduk miskin.
+          </p>
+        </div>
+      </Modal>
+      <Modal
+        open={showInsightModal}
+        onClose={() => setShowInsightModal(false)}
+        title="Chart Insight"
+        width={500}
+        footer={
+          <span className="poverty-modal-source">Sumber: Badan Pusat Statistik (BPS) 2025</span>
+        }
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div className="poverty-formula">
+            <span className="poverty-formula-label">Temuan Utama</span>
+            <div className="poverty-formula-eq" style={{ fontSize: 13 }}>
+              UMP tinggi ≠ kemiskinan rendah
+            </div>
+          </div>
+          <p className="poverty-modal-text">
+            Provinsi-provinsi Papua memiliki UMP tertinggi secara nasional (Rp 4,2–4,3jt), namun juga
+            mencatat persentase kemiskinan tertinggi. Ini menunjukkan bahwa penetapan upah minimum
+            saja tidak cukup tanpa disertai penyerapan tenaga kerja formal yang memadai.
+          </p>
+          <p className="poverty-modal-text">
+            Sebaliknya, DKI Jakarta dan Kepulauan Riau menunjukkan kombinasi UMP tinggi dengan
+            kemiskinan rendah, didukung oleh tingginya persentase tenaga kerja formal dan rata-rata
+            lama sekolah yang di atas rata-rata nasional.
+          </p>
+          <p className="poverty-modal-text">
+            Pola pada keempat scatter plot menunjukkan korelasi negatif yang konsisten antara
+            kemiskinan dengan tenaga kerja formal, rerata lama sekolah, IPM, dan angka partisipasi
+            sekolah — mengindikasikan bahwa investasi di bidang pendidikan dan formalisasi tenaga
+            kerja merupakan faktor kunci dalam pengentasan kemiskinan.
           </p>
         </div>
       </Modal>

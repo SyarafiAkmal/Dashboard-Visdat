@@ -113,6 +113,16 @@ export default function ChartCard({ title, description, xKey, variables }: Chart
                 tick={{ fontSize: 11, fill: '#aaa' }}
                 axisLine={false}
                 tickLine={false}
+                label={{
+                  value: variables?.[0]?.name.replace(/^X — /, '') ?? xKey,
+                  position: 'insideBottom',
+                  offset: -5,
+                  dx: -15,
+                  fontSize: 11,
+                  fill: '#b5721a',
+                  fontFamily: 'Georgia, serif',
+                  fontStyle: 'bold',
+                }}
               />
 
               <YAxis
@@ -120,7 +130,18 @@ export default function ChartCard({ title, description, xKey, variables }: Chart
                 tick={{ fontSize: 11, fill: '#aaa' }}
                 axisLine={false}
                 tickLine={false}
-                width={28}
+                width={50}
+                label={{
+                  value: 'P0 (%)',
+                  angle: -90,
+                  position: 'insideLeft',
+                  offset: 10,
+                  dy: 15,
+                  fontSize: 11,
+                  fill: '#b5721a',
+                  fontFamily: 'Georgia, serif',
+                  fontStyle: 'bold',
+                }}
               />
 
               <Tooltip

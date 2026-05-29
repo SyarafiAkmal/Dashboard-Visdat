@@ -40,35 +40,35 @@ function App() {
               <div className="legend-body">
                 <div className="legend-col">
                   <p className="legend-section-label">Poverty level</p>
-                  <div className="legend-items">
-                    <div className="legend-item">
-                      <span className="legend-swatch" style={{ background: "#E24B4A" }} />
-                      <span className="legend-label">Critical <span className="legend-range">(&gt;75%)</span></span>
+                    <div className="legend-items">
+                      <div className="legend-item">
+                        <span className="legend-swatch" style={{ background: "#E24B4A" }} />
+                        <span className="legend-label">Critical <span className="legend-range">(&gt;25%)</span></span>
+                      </div>
+                      <div className="legend-item">
+                        <span className="legend-swatch" style={{ background: "#EF9F27" }} />
+                        <span className="legend-label">High <span className="legend-range">(15–25%)</span></span>
+                      </div>
+                      <div className="legend-item">
+                        <span className="legend-swatch" style={{ background: "#FAC775" }} />
+                        <span className="legend-label">Moderate <span className="legend-range">(8–15%)</span></span>
+                      </div>
+                      <div className="legend-item">
+                        <span className="legend-swatch" style={{ background: "#FAEEDA" }} />
+                        <span className="legend-label">Low <span className="legend-range">(&lt;8%)</span></span>
+                      </div>
+                      <div className="legend-item">
+                        <span className="legend-swatch legend-swatch--empty" />
+                        <span className="legend-label">No data</span>
+                      </div>
                     </div>
-                    <div className="legend-item">
-                      <span className="legend-swatch" style={{ background: "#EF9F27" }} />
-                      <span className="legend-label">High <span className="legend-range">(50–75%)</span></span>
-                    </div>
-                    <div className="legend-item">
-                      <span className="legend-swatch" style={{ background: "#FAC775" }} />
-                      <span className="legend-label">Moderate <span className="legend-range">(25–50%)</span></span>
-                    </div>
-                    <div className="legend-item">
-                      <span className="legend-swatch" style={{ background: "#FAEEDA" }} />
-                      <span className="legend-label">Low <span className="legend-range">(&lt;25%)</span></span>
-                    </div>
-                    <div className="legend-item">
-                      <span className="legend-swatch legend-swatch--empty" />
-                      <span className="legend-label">No data</span>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="legend-col">
                   <p className="legend-section-label">Gradient scale</p>
                   <div className="legend-gradient-bar" />
                   <div className="legend-gradient-ticks">
-                    {["0", "25", "50", "75", "100"].map((t) => (
+                    {["0%", "8%", "15%", "25%", "30%+"].map((t) => (
                       <span key={t} className="legend-tick">{t}</span>
                     ))}
                   </div>

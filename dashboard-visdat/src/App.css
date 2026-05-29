@@ -708,3 +708,42 @@ body {
   color: #b5721a;
   flex-shrink: 0;
 }
+
+/* MAP CONTROLS */
+
+.map-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background: #f4f4f0;
+  border: 1px solid #deded6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.map-ctrl-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.map-ctrl-btn:hover {
+  color: #333;
+  background: #efefea;
+}
+
+.map-ctrl-divider {
+  height: 1px;
+  background: #deded6;
+  margin: 0;
+}

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
+import { GeoJSON, MapContainer, TileLayer, useMap } from 'react-leaflet';
 import L, { Layer } from 'leaflet';
 import Modal from './Modal';
+import { Crosshair, Plus, Minus } from 'lucide-react';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -21,6 +22,8 @@ type SelectedProvince = {
 
 const P0_MIN = 3.72;
 const P0_MAX = 30.03;
+const DEFAULT_CENTER: [number, number] = [-2.5, 118];
+const DEFAULT_ZOOM = 5;
 
 function getColor(value: number): string {
   const t = Math.max(0, Math.min(1, (value - P0_MIN) / (P0_MAX - P0_MIN)));
@@ -54,11 +57,43 @@ function normalizeProvinceName(raw: string): string {
 }
 
 const INDICATORS = [
-  { key: 'ipm' as keyof ProvinceData,              label: 'Indeks Pembangunan Manusia',    unit: ''    },
-  { key: 'pct_formal_worker' as keyof ProvinceData, label: 'Tenaga Kerja Formal',           unit: '%'   },
-  { key: 'avg_schooling_years' as keyof ProvinceData,label: 'Rerata Lama Sekolah',          unit: ' thn'},
-  { key: 'aps_avg' as keyof ProvinceData,           label: 'Angka Partisipasi Sekolah (avg)',unit: '%'  },
+  { key: 'ipm' as keyof ProvinceData,                label: 'Indeks Pembangunan Manusia',     unit: ''     },
+  { key: 'pct_formal_worker' as keyof ProvinceData,  label: 'Tenaga Kerja Formal',            unit: '%'    },
+  { key: 'avg_schooling_years' as keyof ProvinceData, label: 'Rerata Lama Sekolah',           unit: ' thn' },
+  { key: 'aps_avg' as keyof ProvinceData,            label: 'Angka Partisipasi Sekolah (avg)', unit: '%'   },
 ];
+
+function MapControls() {
+  const map = useMap();
+
+  return (
+    <div className="map-controls">
+      <button
+        className="map-ctrl-btn"
+        onClick={() => map.zoomIn(1)}
+        title="Zoom in"
+      >
+        <Plus size={14} />
+      </button>
+      <div className="map-ctrl-divider" />
+      <button
+        className="map-ctrl-btn"
+        onClick={() => map.zoomOut(1)}
+        title="Zoom out"
+      >
+        <Minus size={14} />
+      </button>
+      <div className="map-ctrl-divider" />
+      <button
+        className="map-ctrl-btn"
+        onClick={() => map.setView(DEFAULT_CENTER, DEFAULT_ZOOM, { animate: true })}
+        title="Reset view"
+      >
+        <Crosshair size={14} />
+      </button>
+    </div>
+  );
+}
 
 export default function IndonesiaChoropleth() {
   const geoJsonRef = useRef<L.GeoJSON | null>(null);
@@ -84,7 +119,11 @@ export default function IndonesiaChoropleth() {
     const value = provinceData[provinceName]?.p0_pct ?? 0;
     return {
       fillColor: value > 0 ? getColor(value) : '#e8e8e2',
-      weight: 1, opacity: 1, color: 'white', dashArray: '2', fillOpacity: 0.85,
+      weight: 1,
+      opacity: 1,
+      color: 'white',
+      dashArray: '2',
+      fillOpacity: 0.85,
     };
   };
 
@@ -105,7 +144,9 @@ export default function IndonesiaChoropleth() {
         e.target.setStyle({ weight: 3, color: '#666', fillOpacity: 1 });
         e.target.bringToFront();
       },
-      mouseout: (e: any) => { geoJsonRef.current?.resetStyle(e.target); },
+      mouseout: (e: any) => {
+        geoJsonRef.current?.resetStyle(e.target);
+      },
       click: () => {
         const data = provinceData[provinceName];
         if (data) setSelectedProvince({ name: provinceName, data });
@@ -115,13 +156,21 @@ export default function IndonesiaChoropleth() {
 
   return (
     <>
-      <div style={{ width: '100%', height: '100%' }}>
+      <div style={{ width: '100%', height: '100%', position: 'relative' }}>
         <MapContainer
-          center={[-2.5, 118]} zoom={5} zoomControl={false} dragging={false}
-          scrollWheelZoom={false} doubleClickZoom={false} touchZoom={false}
-          boxZoom={false} keyboard={false} attributionControl={false}
+          center={DEFAULT_CENTER}
+          zoom={DEFAULT_ZOOM}
+          zoomControl={false}
+          dragging={true}
+          scrollWheelZoom={false}
+          doubleClickZoom={false}
+          touchZoom={false}
+          boxZoom={false}
+          keyboard={false}
+          attributionControl={false}
           style={{ width: '100%', height: '100%' }}
         >
+          <MapControls />
           <TileLayer
             attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

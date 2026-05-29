@@ -161,8 +161,8 @@ body {
 }
 
 .map-legend-gradient {
-  width: 120px;
-  height: 8px;
+  width: 200px;
+  height: 12px;
   border-radius: 3px;
   background: linear-gradient(to right, #FAEEDA, #EF9F27, #E24B4A);
   flex-shrink: 0;

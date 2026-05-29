@@ -4,7 +4,7 @@ import ChartCard from './components/ChartCard';
 import Modal from './components/Modal';
 import StatCards from './components/StatCards';
 import SearchBar from './components/SearchBar';
-import { ExternalLink, Lightbulb } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import { useState } from "react";
 
 function App() {

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { GeoJSON, MapContainer, TileLayer, useMap } from 'react-leaflet';
 import L, { Layer } from 'leaflet';
 import Modal from './Modal';
-import { Crosshair, Plus, Minus } from 'lucide-react';
+import { Crosshair, Plus, Minus, ExternalLink } from 'lucide-react';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -95,11 +95,16 @@ function MapControls() {
   );
 }
 
-export default function IndonesiaChoropleth() {
+type Props = {
+  onShowPovertyModal?: () => void;
+};
+
+export default function IndonesiaChoropleth({ onShowPovertyModal }: Props) {
   const geoJsonRef = useRef<L.GeoJSON | null>(null);
   const [geoData, setGeoData] = useState<any>(null);
   const [provinceData, setProvinceData] = useState<Record<string, ProvinceData>>({});
   const [selectedProvince, setSelectedProvince] = useState<SelectedProvince>(null);
+
 
   useEffect(() => {
     fetch('/indonesia-province.geojson')
@@ -192,6 +197,13 @@ export default function IndonesiaChoropleth() {
           <div className="map-legend-gradient" />
           <span className="map-legend-label">30%+</span>
         </div>
+
+        {onShowPovertyModal && (
+          <button className="map-poverty-btn" onClick={onShowPovertyModal}>
+            How is Poverty Percentage Calculated?
+            <ExternalLink size={10} style={{ marginLeft: 4, verticalAlign: "middle" }} />
+          </button>
+        )}
       </div>
 
       <Modal

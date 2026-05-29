@@ -382,6 +382,7 @@ body {
   padding: 16px 20px;
   flex-direction: column;
   height: fit-content;
+  margin: 0 10%;
 }
 
 .umr-legend {

@@ -194,9 +194,6 @@ function App() {
         onClose={() => setShowInsightModal(false)}
         title="Chart Insight"
         width={500}
-        footer={
-          <span className="poverty-modal-source">Sumber: Badan Pusat Statistik (BPS) 2025</span>
-        }
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div className="poverty-formula">

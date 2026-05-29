@@ -77,11 +77,11 @@ body {
 
 .chart-title {
   margin: 0 0 12px 0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #888;
+  color: #555;
 }
 
 .chart-content {

@@ -89,7 +89,7 @@ function App() {
         {/* RIGHT */}
         <section className="right-panel">
           <div className="chart-grid">
-            <ChartCard title="Population Trend" />
+            <ChartCard title="Tenaga Kerja Formal vs Persentase Kemiskinan" />
             <ChartCard title="Risk Analysis" />
             <ChartCard title="Temperature" />
             <ChartCard title="Prediction" />

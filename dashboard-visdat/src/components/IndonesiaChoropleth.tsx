@@ -192,18 +192,19 @@ export default function IndonesiaChoropleth({ onShowPovertyModal }: Props) {
         </MapContainer>
 
         {/* Legend overlay */}
-        <div className="map-legend-overlay">
-          <span className="map-legend-label">0%</span>
-          <div className="map-legend-gradient" />
-          <span className="map-legend-label">30%+</span>
-        </div>
-
-        {onShowPovertyModal && (
-          <button className="map-poverty-btn" onClick={onShowPovertyModal}>
-            How is Poverty Percentage Calculated?
-            <ExternalLink size={10} style={{ marginLeft: 4, verticalAlign: "middle" }} />
-          </button>
-        )}
+          <div className="map-legend-overlay">
+            <div className="map-legend-gradient-row">
+              <span className="map-legend-label">0%</span>
+              <div className="map-legend-gradient" />
+              <span className="map-legend-label">30%+</span>
+            </div>
+            {onShowPovertyModal && (
+              <button className="map-poverty-btn" onClick={onShowPovertyModal}>
+                How is Poverty Percentage Calculated?
+                <ExternalLink size={10} style={{ marginLeft: 4, verticalAlign: "middle" }} />
+              </button>
+            )}
+          </div>
       </div>
 
       <Modal

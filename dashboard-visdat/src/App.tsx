@@ -31,7 +31,7 @@ function App() {
         {/* BARIS 2 — PETA */}
         <section className="map-row">
           <div className="card map-card">
-            <IndonesiaChoropleth />
+            <IndonesiaChoropleth onShowPovertyModal={() => setShowPovertyModal(true)} />
           </div>
         </section>
 

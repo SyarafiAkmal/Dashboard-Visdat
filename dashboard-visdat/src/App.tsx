@@ -92,6 +92,7 @@ function App() {
               title="Tenaga Kerja Formal vs Persentase Kemiskinan"
               xKey="pct_formal_worker"
               description="Hubungan antara tingkat tenaga kerja formal dengan persentase kemiskinan di setiap provinsi."
+              insight="(r = -0.75, p < 0.001) Semakin tinggi proporsi pekerja formal, semakin rendah kemiskinan. Pekerjaan formal membawa kepastian upah, jaminan sosial, dan stabilitas pendapatan yang melindungi dari kemiskinan."
               variables={[
                 { name: "X — Tenaga Kerja Formal", explanation: "Persentase penduduk yang bekerja di sektor formal terhadap total angkatan kerja." },
                 { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
@@ -101,6 +102,7 @@ function App() {
               title="Rerata Lama Sekolah vs Persentase Kemiskinan"
               xKey="avg_schooling_years"
               description="Hubungan antara rata-rata lama sekolah dengan persentase kemiskinan di setiap provinsi."
+              insight="(r = −0.57, p < 0.001) Korelasi negatif yang signifikan, namun lebih lemah dari APS. Lama sekolah menggambarkan kualitas modal manusia yang sudah terbentuk, bukan akses pendidikan saat ini (efeknya nyata tapi lebih lambat terasa)."
               variables={[
                 { name: "X — Rerata Lama Sekolah", explanation: "Rata-rata jumlah tahun pendidikan yang diterima oleh penduduk di suatu wilayah." },
                 { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
@@ -110,6 +112,7 @@ function App() {
               title="Indeks Pembangunan Manusia vs Persentase Kemiskinan"
               xKey="ipm"
               description="Hubungan antara indeks pembangunan manusia dengan persentase kemiskinan di setiap provinsi."
+              insight="(r = -0.81, p < 0.001) Provinsi dengan indeks pembangunan manusia lebih tinggi cenderung memiliki kemiskinan lebih rendah. IPM mencerminkan kualitas hidup yang lebih baik dan akses yang lebih luas terhadap layanan dasar."
               variables={[
                 { name: "X — Indeks Pembangunan Manusia", explanation: "Indeks yang mengukur tingkat pembangunan manusia berdasarkan pendidikan, kesehatan, dan standar hidup." },
                 { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
@@ -119,6 +122,7 @@ function App() {
               title="Angka Partisipasi Sekolah vs Persentase Kemiskinan"
               xKey="aps_avg"
               description="Hubungan antara angka partisipasi sekolah dengan persentase kemiskinan di setiap provinsi."
+              insight="(r = −0.62, p < 0.001) Provinsi dengan partisipasi sekolah lebih tinggi cenderung memiliki kemiskinan lebih rendah. APS mencerminkan akses pendidikan generasi muda — investasi jangka panjang yang menekan kemiskinan struktural."
               variables={[
                 { name: "X — Angka Partisipasi Sekolah", explanation: "Persentase penduduk usia sekolah yang sedang bersekolah." },
                 { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
@@ -203,7 +207,7 @@ function App() {
             </div>
           </div>
           <p className="poverty-modal-text">
-            Provinsi-provinsi Papua memiliki UMP tertinggi secara nasional (Rp 4,2–4,3jt), namun juga
+            (r = +0.13, p = 0.44) Tidak signifikan secara statistik. Provinsi-provinsi Papua memiliki UMP tertinggi secara nasional (Rp 4,2–4,3jt), namun juga
             mencatat persentase kemiskinan tertinggi. Ini menunjukkan bahwa penetapan upah minimum
             saja tidak cukup tanpa disertai penyerapan tenaga kerja formal yang memadai.
           </p>

@@ -22,6 +22,7 @@ type ProvinceData = {
 type ChartCardProps = {
   title?: string;
   description?: string;
+  insight?: string;
   xKey: keyof Omit<ProvinceData, 'p0_pct'>;
   variables?: { name: string; explanation: string }[];
 };
@@ -32,8 +33,6 @@ const UMP_MAX = 5396761;
 function umpToColor(ump: number): string {
   if (!ump) return '#8B0000';
   const t = Math.max(0, Math.min(1, (ump - UMP_MIN) / (UMP_MAX - UMP_MIN)));
-
-  // Gradient stops: dark red → red → orange → amber → yellow
   const stops = [
     { t: 0.00, r: 139, g:   0, b:   0 },
     { t: 0.25, r: 192, g:  57, b:  43 },
@@ -41,38 +40,22 @@ function umpToColor(ump: number): string {
     { t: 0.75, r: 230, g: 126, b:  34 },
     { t: 1.00, r: 241, g: 196, b:  15 },
   ];
-
   let s = stops[0], e = stops[stops.length - 1];
   for (let i = 0; i < stops.length - 1; i++) {
-    if (t >= stops[i].t && t <= stops[i + 1].t) {
-      s = stops[i];
-      e = stops[i + 1];
-      break;
-    }
+    if (t >= stops[i].t && t <= stops[i + 1].t) { s = stops[i]; e = stops[i + 1]; break; }
   }
-
   const seg = (t - s.t) / (e.t - s.t);
-  const r = Math.round(s.r + (e.r - s.r) * seg);
-  const g = Math.round(s.g + (e.g - s.g) * seg);
-  const b = Math.round(s.b + (e.b - s.b) * seg);
-  return `rgb(${r},${g},${b})`;
+  return `rgb(${Math.round(s.r + (e.r - s.r) * seg)},${Math.round(s.g + (e.g - s.g) * seg)},${Math.round(s.b + (e.b - s.b) * seg)})`;
 }
 
 const CustomDot = (props: any) => {
   const { cx, cy, payload } = props;
   return (
-    <circle
-      cx={cx}
-      cy={cy}
-      r={5}
-      fill={umpToColor(payload.ump)}
-      opacity={0.9}
-      stroke="none"
-    />
+    <circle cx={cx} cy={cy} r={5} fill={umpToColor(payload.ump)} opacity={0.9} stroke="none" />
   );
 };
 
-export default function ChartCard({ title, description, xKey, variables }: ChartCardProps) {
+export default function ChartCard({ title, description, insight, xKey, variables }: ChartCardProps) {
   const [showInfo, setShowInfo] = useState(false);
   const [chartData, setChartData] = useState<{ x: number; y: number; province: string; ump: number }[]>([]);
 
@@ -97,7 +80,7 @@ export default function ChartCard({ title, description, xKey, variables }: Chart
       <div className="card chart-card">
         <div className="chart-header">
           {title && <h3 className="chart-title">{title}</h3>}
-          {(description || variables) && (
+          {(description || variables || insight) && (
             <button className="chart-info-btn" onClick={() => setShowInfo(true)}>?</button>
           )}
         </div>
@@ -184,7 +167,17 @@ export default function ChartCard({ title, description, xKey, variables }: Chart
         width={420}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          {description && <p className="poverty-modal-text">{description}</p>}
+          {description && (
+            <p className="poverty-modal-text">{description}</p>
+          )}
+
+          {insight && (
+            <div className="poverty-formula">
+              <span className="poverty-formula-label">Insight Korelasi</span>
+              <p className="poverty-modal-text" style={{ margin: 0 }}>{insight}</p>
+            </div>
+          )}
+
           {variables && variables.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="legend-section-label">Variables</span>

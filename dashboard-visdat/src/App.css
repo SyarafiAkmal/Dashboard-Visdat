@@ -12,13 +12,13 @@ body,
 
 body {
   background: #ebe6df;
-  overflow: hidden;
+  overflow: auto;
   font-family: 'Georgia', serif;
 }
 
 .dashboard {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   zoom: 0.8;
@@ -26,16 +26,15 @@ body {
 
 /* HEADER */
 
-/* HEADER */
-
 .header {
   height: 90px;
-  padding: 40px;
+  padding: 0 40px;
   background: #f4f4f0;
   border-bottom: 1px solid #deded6;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .header-title {
@@ -82,7 +81,7 @@ body {
   border: 1px solid #deded6;
   outline: none;
   border-radius: 999px;
-  padding: 0 22px;
+  padding: 0 44px 0 22px;
   background: #efefea;
   color: #222;
   font-size: 15px;
@@ -101,6 +100,68 @@ body {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
+/* MAIN CONTENT AREA */
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px 40px;
+}
+
+/* SHARED CARD */
+
+.card {
+  background: #f4f4f0;
+  border-radius: 16px;
+  border: 1px solid #deded6;
+  overflow: hidden;
+}
+
+/* BARIS 1 — KPI */
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* BARIS 2 — MAP */
+
+.map-row {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.map-card {
+  height: 380px;
+}
+
+.legend-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  gap: 10px;
+  overflow: visible;
+}
+
+/* BARIS 3 — CHARTS */
+
+.charts-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chart-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
 /* CHART CARD */
 
 .chart-card {
@@ -112,7 +173,7 @@ body {
 }
 
 .chart-title {
-  margin: 0 0 12px 0;
+  margin: 0;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -133,76 +194,103 @@ body {
   font-style: italic;
 }
 
-/* MAIN LAYOUT */
+/* STAT CARD */
 
-.content-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 24px;
-  padding: 28px 40px;
-}
-
-/* SHARED CARD */
-
-.card {
+.stat-card {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: fit-content;
   background: #f4f4f0;
   border-radius: 16px;
   border: 1px solid #deded6;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.stat-icon {
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  color: #333;
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-unit {
+  font-size: 12px;
+  color: #888;
+  margin-left: 3px;
+}
+
+.stat-bar-track {
+  height: 3px;
+  background: #e8e8e2;
+  border-radius: 2px;
   overflow: hidden;
 }
 
-/* LEFT PANEL */
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
 
-.left-panel {
+.stat-footer {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 6px;
 }
 
-.map-card {
-  height: 400px;
-  width: 1050px;
+.stat-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-style: italic;
+  font-family: 'Georgia', serif;
 }
 
-/* BOTTOM SECTION LEFT */
+.stat-badge--red    { background: #FCEBEB; color: #A32D2D; }
+.stat-badge--green  { background: #EAF3DE; color: #3B6D11; }
+.stat-badge--amber  { background: #FAEEDA; color: #854F0B; }
+.stat-badge--blue   { background: #E6F1FB; color: #185FA5; }
+.stat-badge--gray   { background: #F1EFE8; color: #5F5E5A; }
 
-.bottom-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 140px 140px 1fr;
-  grid-template-rows: auto auto;
-}
-
-.small-card {
-  height: auto;
-  background: #f4f4f0;
+.stat-province {
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  font-family: 'Georgia', serif;
 }
 
 /* LEGEND CARD */
 
-.big-card {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  grid-column: 3;
-  grid-row: 1 / span 2;
-  padding: 16px 20px;
-  gap: 0;
-  background: #f4f4f0;
-}
-
 .legend-header {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  flex-direction: column;
+  gap: 3px;
   padding-bottom: 10px;
   border-bottom: 1px solid #deded6;
 }
 
 .legend-title {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -210,68 +298,16 @@ body {
 }
 
 .legend-subtitle {
-  font-size: 11px;
+  font-size: 10px;
   color: #aaa;
   font-style: italic;
-}
-
-.legend-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  flex: 1;
-  padding: 4px 0;
-}
-
-.legend-section-label {
-  margin: 0 0 8px 0;
-  font-size: 9px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #888;
-}
-
-.legend-items {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.legend-swatch {
-  display: inline-block;
-  width: 26px;
-  height: 11px;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.legend-swatch--empty {
-  background: #e8e8e2;
-  border: 1px solid #d0d0c8;
-}
-
-.legend-label {
-  font-size: 12px;
-  color: #444;
-}
-
-.legend-range {
-  color: #888;
-  font-size: 11px;
 }
 
 .legend-gradient-bar {
   height: 10px;
   border-radius: 3px;
   background: linear-gradient(to right, #FAEEDA, #EF9F27, #E24B4A);
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .legend-gradient-ticks {
@@ -287,7 +323,7 @@ body {
 .legend-footer {
   border-top: 1px solid #deded6;
   padding-top: 10px;
-  margin-top: 8px;
+  margin-top: auto;
 }
 
 .legend-btn {
@@ -311,25 +347,153 @@ body {
   background: #fdf3e7;
 }
 
-/* RIGHT PANEL */
-
-.right-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.chart-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+/* UMR LEGEND */
 
 .bottom-right-card {
   display: flex;
   padding: 16px 20px;
   flex-direction: column;
   height: fit-content;
+}
+
+.umr-legend {
+  display: flex;
+  gap: 32px;
+  width: 100%;
+}
+
+.umr-legend-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.umr-legend-title {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.umr-legend-subtitle {
+  font-size: 12px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: #888;
+  max-width: 120px;
+  line-height: 1.5;
+}
+
+.umr-legend-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.umr-gradient-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.umr-gradient-bar {
+  flex: 1;
+  height: 14px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #8B0000, #C0392B, #E24B4A, #E67E22, #F39C12, #F1C40F);
+}
+
+.umr-gradient-label {
+  font-size: 10px;
+  color: #888;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.umr-gradient-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.umr-tick {
+  font-size: 10px;
+  color: #888;
+}
+
+.umr-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #deded6;
+}
+
+/* CHART HEADER */
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.chart-header .chart-title {
+  margin: 0;
+}
+
+.chart-info-btn {
+  background: none;
+  border: 1px solid #e8c49a;
+  border-radius: 8px;
+  width: 25px;
+  height: 25px;
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #b5721a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  line-height: 1;
+}
+
+.chart-info-btn:hover {
+  color: #8a5210;
+  border-color: #c8893a;
+  background: #fdf3e7;
+}
+
+/* CHART VARIABLE LIST */
+
+.chart-variable-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  background: #efefea;
+  border: 1px solid #deded6;
+  border-radius: 8px;
+}
+
+.chart-variable-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #888;
+}
+
+.chart-variable-desc {
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #555;
+  line-height: 1.5;
 }
 
 /* MODAL */
@@ -449,230 +613,6 @@ body {
   font-size: 11px;
   color: #aaa;
   font-style: italic;
-}
-
-/* UMR LEGEND */
-
-.umr-legend {
-  display: flex;
-  gap: 32px;
-  width: 100%;
-}
-
-.umr-legend-left {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.umr-legend-title {
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #555;
-}
-
-.umr-legend-subtitle {
-  font-size: 12px;
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  color: #888;
-  max-width: 120px;
-  line-height: 1.5;
-}
-
-.umr-legend-right {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-
-.umr-gradient-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.umr-gradient-bar {
-  flex: 1;
-  height: 14px;
-  border-radius: 3px;
-  background: linear-gradient(to right, #8B0000, #C0392B, #E24B4A, #E67E22, #F39C12, #F1C40F);
-}
-
-.umr-gradient-label {
-  font-size: 10px;
-  color: #888;
-  font-style: italic;
-  font-family: 'Georgia', serif;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.umr-gradient-ticks {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2px;
-}
-
-.umr-tick {
-  font-size: 10px;
-  color: #888;
-}
-
-/* CHART HEADER */
-
-.chart-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.chart-header .chart-title {
-  margin: 0;
-}
-
-.chart-info-btn {
-  background: none;
-  border: 1px solid #e8c49a;
-  border-radius: 8px;
-  width: 25px;
-  height: 25px;
-  font-size: 13px;
-  font-family: 'Georgia', serif;
-  color: #b5721a;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-  line-height: 1;
-}
-
-.chart-info-btn:hover {
-  color: #8a5210;
-  border-color: #c8893a;
-  background: #fdf3e7;
-}
-
-/* CHART VARIABLE LIST */
-
-.chart-variable-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 14px;
-  background: #efefea;
-  border: 1px solid #deded6;
-  border-radius: 8px;
-}
-
-.chart-variable-name {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #888;
-}
-
-.chart-variable-desc {
-  font-size: 13px;
-  font-family: 'Georgia', serif;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* STAT CARD */
-
-.stat-card {
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  height: fit-content;
-}
-
-.stat-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.stat-label {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #555;
-}
-
-.stat-icon {
-  color: #888;
-  display: flex;
-  align-items: center;
-}
-
-.stat-value {
-  font-size: 24px;
-  color: #333;
-  font-family: 'Georgia', serif;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.stat-unit {
-  font-size: 12px;
-  color: #888;
-  margin-left: 3px;
-}
-
-.stat-bar-track {
-  height: 3px;
-  background: #e8e8e2;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.stat-bar-fill {
-  height: 100%;
-  border-radius: 2px;
-}
-
-.stat-footer {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.stat-badge {
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-style: italic;
-  font-family: 'Georgia', serif;
-}
-
-.stat-badge--red    { background: #FCEBEB; color: #A32D2D; }
-.stat-badge--green  { background: #EAF3DE; color: #3B6D11; }
-.stat-badge--amber  { background: #FAEEDA; color: #854F0B; }
-.stat-badge--blue   { background: #E6F1FB; color: #185FA5; }
-.stat-badge--gray   { background: #F1EFE8; color: #5F5E5A; }
-
-.stat-province {
-  font-size: 11px;
-  font-style: italic;
-  color: #888;
-  font-family: 'Georgia', serif;
-}
-
-.umr-footer {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #deded6;
 }
 
 /* SEARCH DROPDOWN */

@@ -18,76 +18,44 @@ function App() {
           <span className="header-eyebrow">Evaluasi Faktor Ekonomi Sosial (Badan Pusat Statistik 2025)</span>
           <h1 className="header-heading">Dashboard Visualisasi Potret Kemiskinan: Mencari Akar Masalah</h1>
         </div>
-
         <SearchBar />
       </header>
 
-      <main className="content-grid">
-        {/* LEFT */}
-        <section className="left-panel">
+      <main className="content-area">
+
+        {/* BARIS 1 — KPI CARDS */}
+        <section className="kpi-row">
+          <StatCards />
+        </section>
+
+        {/* BARIS 2 — PETA */}
+        <section className="map-row">
           <div className="card map-card">
             <IndonesiaChoropleth />
           </div>
-
-          <div className="bottom-grid">
-            <StatCards />
-            <div className="card big-card">
-              <div className="legend-header">
-                <span className="legend-title">Map legend (P0: Poverty Percentage per Province)</span>
-                <span className="legend-subtitle">Poverty Percentage</span>
-              </div>
-
-              <div className="legend-body">
-                <div className="legend-col">
-                  <p className="legend-section-label">Poverty level</p>
-                    <div className="legend-items">
-                      <div className="legend-item">
-                        <span className="legend-swatch" style={{ background: "#E24B4A" }} />
-                        <span className="legend-label">Critical <span className="legend-range">(&gt;25%)</span></span>
-                      </div>
-                      <div className="legend-item">
-                        <span className="legend-swatch" style={{ background: "#EF9F27" }} />
-                        <span className="legend-label">High <span className="legend-range">(15–25%)</span></span>
-                      </div>
-                      <div className="legend-item">
-                        <span className="legend-swatch" style={{ background: "#FAC775" }} />
-                        <span className="legend-label">Moderate <span className="legend-range">(8–15%)</span></span>
-                      </div>
-                      <div className="legend-item">
-                        <span className="legend-swatch" style={{ background: "#FAEEDA" }} />
-                        <span className="legend-label">Low <span className="legend-range">(&lt;8%)</span></span>
-                      </div>
-                      <div className="legend-item">
-                        <span className="legend-swatch legend-swatch--empty" />
-                        <span className="legend-label">No data</span>
-                      </div>
-                    </div>
-                </div>
-
-                <div className="legend-col">
-                  <p className="legend-section-label">Gradient scale</p>
-                  <div className="legend-gradient-bar" />
-                  <div className="legend-gradient-ticks">
-                    {["0%", "8%", "15%", "25%", "30%+"].map((t) => (
-                      <span key={t} className="legend-tick">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="legend-footer">
-                <button className="legend-btn" onClick={() => setShowPovertyModal(true)}>
-                  How is Poverty Percentage Calculated?
-                  <ExternalLink size={11} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
-                </button>
-              </div>
+          <div className="card legend-card">
+            <div className="legend-header">
+              <span className="legend-title">Map Legend</span>
+              <span className="legend-subtitle">P0: Poverty Percentage per Province</span>
+            </div>
+            <div className="legend-gradient-bar" />
+            <div className="legend-gradient-ticks">
+              {["0%", "8%", "15%", "25%", "30%+"].map((t) => (
+                <span key={t} className="legend-tick">{t}</span>
+              ))}
+            </div>
+            <div className="legend-footer">
+              <button className="legend-btn" onClick={() => setShowPovertyModal(true)}>
+                How is Poverty Percentage Calculated?
+                <ExternalLink size={11} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
+              </button>
             </div>
           </div>
         </section>
 
-        {/* RIGHT */}
-        <section className="right-panel">
-          <div className="chart-grid">
+        {/* BARIS 3 — SCATTER PLOTS + UMR */}
+        <section className="charts-row">
+          <div className="chart-grid-3">
             <ChartCard
               title="Tenaga Kerja Formal vs Persentase Kemiskinan"
               xKey="pct_formal_worker"
@@ -105,16 +73,6 @@ function App() {
               insight="(r = −0.57, p < 0.001) Korelasi negatif yang signifikan, namun lebih lemah dari APS. Lama sekolah menggambarkan kualitas modal manusia yang sudah terbentuk, bukan akses pendidikan saat ini (efeknya nyata tapi lebih lambat terasa)."
               variables={[
                 { name: "X — Rerata Lama Sekolah", explanation: "Rata-rata jumlah tahun pendidikan yang diterima oleh penduduk di suatu wilayah." },
-                { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
-              ]}
-            />
-            <ChartCard
-              title="Indeks Pembangunan Manusia vs Persentase Kemiskinan"
-              xKey="ipm"
-              description="Hubungan antara indeks pembangunan manusia dengan persentase kemiskinan di setiap provinsi."
-              insight="(r = -0.81, p < 0.001) Provinsi dengan indeks pembangunan manusia lebih tinggi cenderung memiliki kemiskinan lebih rendah. IPM mencerminkan kualitas hidup yang lebih baik dan akses yang lebih luas terhadap layanan dasar."
-              variables={[
-                { name: "X — Indeks Pembangunan Manusia", explanation: "Indeks yang mengukur tingkat pembangunan manusia berdasarkan pendidikan, kesehatan, dan standar hidup." },
                 { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
               ]}
             />
@@ -157,6 +115,7 @@ function App() {
             </div>
           </div>
         </section>
+
       </main>
 
       <Modal
@@ -164,9 +123,7 @@ function App() {
         onClose={() => setShowPovertyModal(false)}
         title="Cara Menghitung Persentase Kemiskinan"
         width={480}
-        footer={
-          <span className="poverty-modal-source">Sumber: Badan Pusat Statistik (BPS)</span>
-        }
+        footer={<span className="poverty-modal-source">Sumber: Badan Pusat Statistik (BPS)</span>}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div className="poverty-formula">
@@ -193,6 +150,7 @@ function App() {
           </p>
         </div>
       </Modal>
+
       <Modal
         open={showInsightModal}
         onClose={() => setShowInsightModal(false)}
@@ -207,20 +165,18 @@ function App() {
             </div>
           </div>
           <p className="poverty-modal-text">
-            (r = +0.13, p = 0.44) Tidak signifikan secara statistik. Provinsi-provinsi Papua memiliki UMP tertinggi secara nasional (Rp 4,2–4,3jt), namun juga
-            mencatat persentase kemiskinan tertinggi. Ini menunjukkan bahwa penetapan upah minimum
-            saja tidak cukup tanpa disertai penyerapan tenaga kerja formal yang memadai.
+            (r = +0.13, p = 0.44) Tidak signifikan secara statistik. Provinsi-provinsi Papua memiliki UMP tertinggi
+            secara nasional (Rp 4,2–4,3jt), namun juga mencatat persentase kemiskinan tertinggi. Ini menunjukkan
+            bahwa penetapan upah minimum saja tidak cukup tanpa disertai penyerapan tenaga kerja formal yang memadai.
           </p>
           <p className="poverty-modal-text">
-            Sebaliknya, DKI Jakarta dan Kepulauan Riau menunjukkan kombinasi UMP tinggi dengan
-            kemiskinan rendah, didukung oleh tingginya persentase tenaga kerja formal dan rata-rata
-            lama sekolah yang di atas rata-rata nasional.
+            Sebaliknya, DKI Jakarta dan Kepulauan Riau menunjukkan kombinasi UMP tinggi dengan kemiskinan rendah,
+            didukung oleh tingginya persentase tenaga kerja formal dan rata-rata lama sekolah yang di atas rata-rata nasional.
           </p>
           <p className="poverty-modal-text">
-            Pola pada keempat scatter plot menunjukkan korelasi negatif yang konsisten antara
-            kemiskinan dengan tenaga kerja formal, rerata lama sekolah, IPM, dan angka partisipasi
-            sekolah — mengindikasikan bahwa investasi di bidang pendidikan dan formalisasi tenaga
-            kerja merupakan faktor kunci dalam pengentasan kemiskinan.
+            Pola pada ketiga scatter plot menunjukkan korelasi negatif yang konsisten antara kemiskinan dengan
+            tenaga kerja formal, rerata lama sekolah, dan angka partisipasi sekolah — mengindikasikan bahwa
+            investasi di bidang pendidikan dan formalisasi tenaga kerja merupakan faktor kunci dalam pengentasan kemiskinan.
           </p>
         </div>
       </Modal>

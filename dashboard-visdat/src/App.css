@@ -630,7 +630,7 @@ body {
 
 .stat-unit {
   font-size: 12px;
-  color: #aaa;
+  color: #888;
   margin-left: 3px;
 }
 
@@ -669,6 +669,6 @@ body {
 .stat-province {
   font-size: 11px;
   font-style: italic;
-  color: #aaa;
+  color: #888;
   font-family: 'Georgia', serif;
 }

@@ -89,10 +89,38 @@ function App() {
         {/* RIGHT */}
         <section className="right-panel">
           <div className="chart-grid">
-            <ChartCard title="Tenaga Kerja Formal vs Persentase Kemiskinan" />
-            <ChartCard title="Rerata Lama Sekolah vs Persentase Kemiskinan" />
-            <ChartCard title="Indeks Pembangunan Manusia vs Persentase Kemiskinan" />
-            <ChartCard title="Angka Partisipasi Sekolah vs Persentase Kemiskinan" />
+            <ChartCard
+              title="Tenaga Kerja Formal vs Persentase Kemiskinan"
+              description="Hubungan antara tingkat tenaga kerja formal dengan persentase kemiskinan di setiap provinsi."
+              variables={[
+                { name: "X — Tenaga Kerja Formal", explanation: "Persentase penduduk yang bekerja di sektor formal terhadap total angkatan kerja." },
+                { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
+              ]}
+            />
+            <ChartCard
+              title="Rerata Lama Sekolah vs Persentase Kemiskinan"
+              description="Hubungan antara rata-rata lama sekolah dengan persentase kemiskinan di setiap provinsi."
+              variables={[
+                { name: "X — Rerata Lama Sekolah", explanation: "Rata-rata jumlah tahun pendidikan yang diterima oleh penduduk di suatu wilayah." },
+                { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
+              ]}
+            />
+            <ChartCard
+              title="Indeks Pembangunan Manusia vs Persentase Kemiskinan"
+              description="Hubungan antara indeks pembangunan manusia dengan persentase kemiskinan di setiap provinsi."
+              variables={[
+                { name: "X — Indeks Pembangunan Manusia", explanation: "Indeks yang mengukur tingkat pembangunan manusia berdasarkan pendidikan, kesehatan, dan standar hidup." },
+                { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
+              ]}
+            />
+            <ChartCard
+              title="Angka Partisipasi Sekolah vs Persentase Kemiskinan"
+              description="Hubungan antara angka partisipasi sekolah dengan persentase kemiskinan di setiap provinsi."
+              variables={[
+                { name: "X — Angka Partisipasi Sekolah", explanation: "Persentase penduduk usia sekolah yang sedang bersekolah." },
+                { name: "Y — Persentase Kemiskinan", explanation: "Persentase penduduk miskin (P0) berdasarkan Garis Kemiskinan BPS." },
+              ]}
+            />
           </div>
 
           <div className="card bottom-right-card">

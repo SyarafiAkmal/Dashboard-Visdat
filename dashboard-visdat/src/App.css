@@ -193,7 +193,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #aaa;
+  color: #888;
 }
 
 .legend-items {
@@ -227,7 +227,7 @@ body {
 }
 
 .legend-range {
-  color: #aaa;
+  color: #888;
   font-size: 11px;
 }
 
@@ -436,7 +436,7 @@ body {
 }
 
 .umr-legend-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -490,4 +490,68 @@ body {
 .umr-tick {
   font-size: 10px;
   color: #888;
+}
+
+/* CHART HEADER */
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.chart-header .chart-title {
+  margin: 0;
+}
+
+.chart-info-btn {
+  background: none;
+  border: 1px solid #d0d0c8;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  font-family: 'Georgia', serif;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  line-height: 1;
+}
+
+.chart-info-btn:hover {
+  color: #333;
+  border-color: #999;
+  background: #efefea;
+}
+
+/* CHART VARIABLE LIST */
+
+.chart-variable-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  background: #efefea;
+  border: 1px solid #deded6;
+  border-radius: 8px;
+}
+
+.chart-variable-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #888;
+}
+
+.chart-variable-desc {
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #555;
+  line-height: 1.5;
 }

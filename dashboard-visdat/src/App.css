@@ -328,7 +328,7 @@ body {
   display: flex;
   padding: 16px 20px;
   flex-direction: column;
-  height: 160px;
+  height: fit-content;
 }
 
 /* MODAL */
@@ -451,13 +451,6 @@ body {
 }
 
 /* UMR LEGEND */
-
-.bottom-right-card {
-  height: 160px;
-  display: flex;
-  padding-top: 20px;
-  align-items: stretch;
-}
 
 .umr-legend {
   display: flex;

@@ -38,7 +38,7 @@ function App() {
             <StatCards />
             <div className="card big-card">
               <div className="legend-header">
-                <span className="legend-title">Map legend</span>
+                <span className="legend-title">Map legend (P0: Poverty Percentage per Province)</span>
                 <span className="legend-subtitle">Poverty Percentage</span>
               </div>
 

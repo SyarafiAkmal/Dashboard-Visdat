@@ -29,7 +29,7 @@ body {
 
 .header {
   height: 90px;
-  padding: 0 40px;
+  padding: 40px;
   background: #f4f4f0;
   border-bottom: 1px solid #deded6;
   display: flex;

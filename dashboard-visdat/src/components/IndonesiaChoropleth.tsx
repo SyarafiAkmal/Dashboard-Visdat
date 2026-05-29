@@ -197,7 +197,7 @@ export default function IndonesiaChoropleth() {
             </h2>
 
             <p>
-              Value:{' '}
+              P0:{' '}
               {selectedProvince.value}
             </p>
 

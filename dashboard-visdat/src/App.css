@@ -411,3 +411,83 @@ body {
   color: #aaa;
   font-style: italic;
 }
+
+/* UMR LEGEND */
+
+.bottom-right-card {
+  height: 160px;
+  display: flex;
+  padding-top: 20px;
+  align-items: stretch;
+}
+
+.umr-legend {
+  display: flex;
+  gap: 32px;
+  padding: 0 28px;
+  width: 100%;
+}
+
+.umr-legend-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.umr-legend-title {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.umr-legend-subtitle {
+  font-size: 12px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: #888;
+  max-width: 120px;
+  line-height: 1.5;
+}
+
+.umr-legend-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.umr-gradient-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.umr-gradient-bar {
+  flex: 1;
+  height: 14px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #8B0000, #C0392B, #E24B4A, #E67E22, #F39C12, #F1C40F);
+}
+
+.umr-gradient-label {
+  font-size: 10px;
+  color: #888;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.umr-gradient-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.umr-tick {
+  font-size: 10px;
+  color: #888;
+}

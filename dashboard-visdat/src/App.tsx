@@ -90,12 +90,31 @@ function App() {
         <section className="right-panel">
           <div className="chart-grid">
             <ChartCard title="Tenaga Kerja Formal vs Persentase Kemiskinan" />
-            <ChartCard title="Risk Analysis" />
-            <ChartCard title="Temperature" />
-            <ChartCard title="Prediction" />
+            <ChartCard title="Rerata Lama Sekolah vs Persentase Kemiskinan" />
+            <ChartCard title="Indeks Pembangunan Manusia vs Persentase Kemiskinan" />
+            <ChartCard title="Angka Partisipasi Sekolah vs Persentase Kemiskinan" />
           </div>
 
-          <div className="card bottom-right-card" />
+          <div className="card bottom-right-card">
+            <div className="umr-legend">
+              <div className="umr-legend-left">
+                <span className="umr-legend-title">UMR Indicator</span>
+                <span className="umr-legend-subtitle">Upah Minimum Regional per province</span>
+              </div>
+              <div className="umr-legend-right">
+                <div className="umr-gradient-wrap">
+                  <span className="umr-gradient-label">Low income</span>
+                  <div className="umr-gradient-bar" />
+                  <span className="umr-gradient-label">High income</span>
+                </div>
+                <div className="umr-gradient-ticks">
+                  {["Rp 1,5jt", "Rp 2jt", "Rp 2,5jt", "Rp 3jt", "Rp 3,5jt", "Rp 4jt+"].map((t) => (
+                    <span key={t} className="umr-tick">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { Layer } from 'leaflet';
+import Modal from './Modal';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -39,21 +40,14 @@ function getColor(value: number) {
 
 export default function IndonesiaChoropleth() {
   const geoJsonRef = useRef<L.GeoJSON | null>(null);
-
   const [geoData, setGeoData] = useState<any>(null);
-
-  const [selectedProvince, setSelectedProvince] =
-    useState<SelectedProvince>(null);
+  const [selectedProvince, setSelectedProvince] = useState<SelectedProvince>(null);
 
   useEffect(() => {
     fetch('/indonesia-province.geojson')
       .then((res) => res.json())
-      .then((data) => {
-        setGeoData(data);
-      })
-      .catch((err) => {
-        console.error('Failed to load GeoJSON:', err);
-      });
+      .then((data) => setGeoData(data))
+      .catch((err) => console.error('Failed to load GeoJSON:', err));
   }, []);
 
   const style = (feature: any) => {
@@ -74,10 +68,7 @@ export default function IndonesiaChoropleth() {
     };
   };
 
-  const onEachFeature = (
-    feature: any,
-    layer: Layer
-  ) => {
+  const onEachFeature = (feature: any, layer: Layer) => {
     const provinceName =
       feature.properties.Propinsi ||
       feature.properties.PROVINSI ||
@@ -95,37 +86,21 @@ export default function IndonesiaChoropleth() {
     layer.on({
       mouseover: (e: any) => {
         const target = e.target;
-
-        target.setStyle({
-          weight: 3,
-          color: '#666',
-          fillOpacity: 0.9,
-        });
-
+        target.setStyle({ weight: 3, color: '#666', fillOpacity: 0.9 });
         target.bringToFront();
       },
-
       mouseout: (e: any) => {
         geoJsonRef.current?.resetStyle(e.target);
       },
-
       click: () => {
-        setSelectedProvince({
-          name: provinceName,
-          value,
-        });
+        setSelectedProvince({ name: provinceName, value });
       },
     });
   };
 
   return (
     <>
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <div style={{ width: '100%', height: '100%' }}>
         <MapContainer
           center={[-2.5, 118]}
           zoom={5}
@@ -137,16 +112,12 @@ export default function IndonesiaChoropleth() {
           boxZoom={false}
           keyboard={false}
           attributionControl={false}
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
+          style={{ width: '100%', height: '100%' }}
         >
           <TileLayer
             attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-
           {geoData && (
             <GeoJSON
               data={geoData}
@@ -158,70 +129,29 @@ export default function IndonesiaChoropleth() {
         </MapContainer>
       </div>
 
-      {/* Dialog */}
-      {selectedProvince && (
-        <div
-          onClick={() =>
-            setSelectedProvince(null)
-          }
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background:
-              'rgba(0,0,0,0.4)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 9999,
-          }}
-        >
-          <div
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-            style={{
-              width: '400px',
-              background: 'white',
-              borderRadius: '20px',
-              padding: '24px',
-              boxShadow:
-                '0 10px 40px rgba(0,0,0,0.2)',
-            }}
-          >
-            <h2
-              style={{
-                marginTop: 0,
-              }}
-            >
-              {selectedProvince.name}
-            </h2>
-
-            <p>
-              P0:{' '}
-              {selectedProvince.value}
-            </p>
-
-            <button
-              onClick={() =>
-                setSelectedProvince(
-                  null
-                )
-              }
-              style={{
-                marginTop: '20px',
-                padding:
-                  '10px 18px',
-                borderRadius:
-                  '12px',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              Close
-            </button>
+      <Modal
+        open={!!selectedProvince}
+        onClose={() => setSelectedProvince(null)}
+        title={selectedProvince?.name ?? ''}
+        width={400}
+        footer={
+          <span className="poverty-modal-source">Sumber: Badan Pusat Statistik (BPS)</span>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <div className="poverty-formula">
+            <span className="poverty-formula-label">Persentase Kemiskinan (P0)</span>
+            <div className="poverty-formula-eq">
+              {selectedProvince?.value}%
+            </div>
           </div>
+          <p className="poverty-modal-text">
+            Persentase penduduk miskin di provinsi <strong>{selectedProvince?.name}</strong> adalah{' '}
+            <strong>{selectedProvince?.value}%</strong> dari total penduduk, berdasarkan data Garis
+            Kemiskinan yang ditetapkan oleh Badan Pusat Statistik.
+          </p>
         </div>
-      )}
+      </Modal>
     </>
   );
 }

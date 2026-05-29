@@ -23,7 +23,7 @@ type SelectedProvince = {
 const P0_MIN = 3.72;
 const P0_MAX = 30.03;
 const DEFAULT_CENTER: [number, number] = [-2.5, 118];
-const DEFAULT_ZOOM = 5;
+const DEFAULT_ZOOM = 5.2;
 
 function getColor(value: number): string {
   const t = Math.max(0, Math.min(1, (value - P0_MIN) / (P0_MAX - P0_MIN)));
@@ -185,6 +185,13 @@ export default function IndonesiaChoropleth() {
             />
           )}
         </MapContainer>
+
+        {/* Legend overlay */}
+        <div className="map-legend-overlay">
+          <span className="map-legend-label">0%</span>
+          <div className="map-legend-gradient" />
+          <span className="map-legend-label">30%+</span>
+        </div>
       </div>
 
       <Modal

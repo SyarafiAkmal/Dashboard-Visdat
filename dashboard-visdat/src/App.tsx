@@ -33,24 +33,6 @@ function App() {
           <div className="card map-card">
             <IndonesiaChoropleth />
           </div>
-          <div className="card legend-card">
-            <div className="legend-header">
-              <span className="legend-title">Map Legend</span>
-              <span className="legend-subtitle">P0: Poverty Percentage per Province</span>
-            </div>
-            <div className="legend-gradient-bar" />
-            <div className="legend-gradient-ticks">
-              {["0%", "8%", "15%", "25%", "30%+"].map((t) => (
-                <span key={t} className="legend-tick">{t}</span>
-              ))}
-            </div>
-            <div className="legend-footer">
-              <button className="legend-btn" onClick={() => setShowPovertyModal(true)}>
-                How is Poverty Percentage Calculated?
-                <ExternalLink size={11} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
-              </button>
-            </div>
-          </div>
         </section>
 
         {/* BARIS 3 — SCATTER PLOTS + UMR */}

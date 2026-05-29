@@ -2,7 +2,8 @@ import './App.css';
 import IndonesiaChoropleth from './components/IndonesiaChoropleth';
 import ChartCard from './components/ChartCard';
 import Modal from './components/Modal';
-import { ExternalLink } from "lucide-react";
+import StatCard from './components/StatCard';
+import { ExternalLink, Search, BarChart2, TrendingUp, TrendingDown, Users } from "lucide-react";
 import { useState } from "react";
 
 function App() {
@@ -11,12 +12,18 @@ function App() {
   return (
     <div className="dashboard">
       <header className="header">
+        <div className="header-title">
+          <span className="header-eyebrow">Evaluasi Faktor Ekonomi Sosial</span>
+          <h1 className="header-heading">Dashboard Visualisasi Potret Kemiskinan: Mencari Akar Masalah</h1>
+        </div>
+
         <div className="search-container">
           <input
             type="text"
             placeholder="Search province..."
             className="search-input"
           />
+          <Search size={16} className="search-icon" />
         </div>
       </header>
 
@@ -28,10 +35,50 @@ function App() {
           </div>
 
           <div className="bottom-grid">
-            <div className="card small-card" />
-            <div className="card small-card" />
-            <div className="card small-card" />
-            <div className="card small-card" />
+            <StatCard
+              label="Rata-rata kemiskinan"
+              value="11.2"
+              unit="%"
+              badge="Moderate"
+              badgeType="amber"
+              province="34 provinsi"
+              barColor="#888780"
+              barWidth={11.2}
+              icon={<BarChart2 size={14} />}
+            />
+            <StatCard
+              label="Kemiskinan tertinggi"
+              value="26.8"
+              unit="%"
+              badge="Critical"
+              badgeType="red"
+              province="Papua Pegunungan"
+              barColor="#E24B4A"
+              barWidth={26.8}
+              icon={<TrendingUp size={14} />}
+            />
+            <StatCard
+              label="Kemiskinan terendah"
+              value="3.1"
+              unit="%"
+              badge="Low"
+              badgeType="green"
+              province="Bali"
+              barColor="#639922"
+              barWidth={3.1}
+              icon={<TrendingDown size={14} />}
+            />
+            <StatCard
+              label="Jumlah penduduk miskin"
+              value="25.9"
+              unit="jt"
+              badge="Nasional"
+              badgeType="blue"
+              province="per Maret 2024"
+              barColor="#378ADD"
+              barWidth={60}
+              icon={<Users size={14} />}
+            />
             <div className="card big-card">
               <div className="legend-header">
                 <span className="legend-title">Map legend</span>

@@ -25,19 +25,54 @@ body {
 
 /* HEADER */
 
+/* HEADER */
+
 .header {
   height: 90px;
-  padding: 20px 40px;
+  padding: 0 40px;
   background: #f4f4f0;
   border-bottom: 1px solid #deded6;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.header-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+}
+
+.header-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
+  color: #333;
+  letter-spacing: 0.01em;
 }
 
 /* SEARCH BAR */
 
 .search-container {
   width: 380px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
 }
 
 .search-input {
@@ -135,11 +170,11 @@ body {
   display: grid;
   gap: 16px;
   grid-template-columns: 140px 140px 1fr;
-  grid-template-rows: 100px 100px;
+  grid-template-rows: auto auto;
 }
 
 .small-card {
-  height: 100%;
+  height: auto;
   background: #f4f4f0;
 }
 
@@ -554,4 +589,86 @@ body {
   font-family: 'Georgia', serif;
   color: #555;
   line-height: 1.5;
+}
+
+/* STAT CARD */
+
+.stat-card {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: fit-content;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.stat-icon {
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  color: #333;
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-unit {
+  font-size: 12px;
+  color: #aaa;
+  margin-left: 3px;
+}
+
+.stat-bar-track {
+  height: 3px;
+  background: #e8e8e2;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.stat-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+.stat-badge--red    { background: #FCEBEB; color: #A32D2D; }
+.stat-badge--green  { background: #EAF3DE; color: #3B6D11; }
+.stat-badge--amber  { background: #FAEEDA; color: #854F0B; }
+.stat-badge--blue   { background: #E6F1FB; color: #185FA5; }
+.stat-badge--gray   { background: #F1EFE8; color: #5F5E5A; }
+
+.stat-province {
+  font-size: 11px;
+  font-style: italic;
+  color: #aaa;
+  font-family: 'Georgia', serif;
 }

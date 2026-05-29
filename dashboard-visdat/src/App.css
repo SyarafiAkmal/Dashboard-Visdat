@@ -325,6 +325,9 @@ body {
 }
 
 .bottom-right-card {
+  display: flex;
+  padding: 16px 20px;
+  flex-direction: column;
   height: 160px;
 }
 
@@ -459,7 +462,6 @@ body {
 .umr-legend {
   display: flex;
   gap: 32px;
-  padding: 0 28px;
   width: 100%;
 }
 

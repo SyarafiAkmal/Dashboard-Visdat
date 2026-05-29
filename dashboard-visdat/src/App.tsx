@@ -4,7 +4,7 @@ import ChartCard from './components/ChartCard';
 import Modal from './components/Modal';
 import StatCards from './components/StatCards';
 import SearchBar from './components/SearchBar';
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Lightbulb } from "lucide-react";
 import { useState } from "react";
 
 function App() {
@@ -143,13 +143,13 @@ function App() {
                     <span key={t} className="umr-tick">{t}</span>
                   ))}
                 </div>
-                <div className="umr-footer">
-                  <button className="legend-btn" onClick={() => setShowInsightModal(true)}>
-                    Chart Insight
-                    <ExternalLink size={11} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
-                  </button>
-                </div>
               </div>
+            </div>
+            <div className="umr-footer">
+              <button className="legend-btn" onClick={() => setShowInsightModal(true)}>
+                Chart Insight
+                <Lightbulb size={13} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
+              </button>
             </div>
           </div>
         </section>

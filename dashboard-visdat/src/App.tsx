@@ -13,7 +13,7 @@ function App() {
     <div className="dashboard">
       <header className="header">
         <div className="header-title">
-          <span className="header-eyebrow">Evaluasi Faktor Ekonomi Sosial</span>
+          <span className="header-eyebrow">Evaluasi Faktor Ekonomi Sosial (Badan Pusat Statistik 2025)</span>
           <h1 className="header-heading">Dashboard Visualisasi Potret Kemiskinan: Mencari Akar Masalah</h1>
         </div>
 

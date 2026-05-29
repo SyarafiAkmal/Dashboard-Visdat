@@ -2,7 +2,7 @@ import './App.css';
 import IndonesiaChoropleth from './components/IndonesiaChoropleth';
 import ChartCard from './components/ChartCard';
 import Modal from './components/Modal';
-import StatCard from './components/StatCard';
+import StatCards from './components/StatCards';
 import { ExternalLink, Search, BarChart2, TrendingUp, TrendingDown, Users } from "lucide-react";
 import { useState } from "react";
 
@@ -35,50 +35,7 @@ function App() {
           </div>
 
           <div className="bottom-grid">
-            <StatCard
-              label="Rata-rata kemiskinan"
-              value="11.2"
-              unit="%"
-              badge="Moderate"
-              badgeType="amber"
-              province="34 provinsi"
-              barColor="#888780"
-              barWidth={11.2}
-              icon={<BarChart2 size={14} />}
-            />
-            <StatCard
-              label="Kemiskinan tertinggi"
-              value="26.8"
-              unit="%"
-              badge="Critical"
-              badgeType="red"
-              province="Papua Pegunungan"
-              barColor="#E24B4A"
-              barWidth={26.8}
-              icon={<TrendingUp size={14} />}
-            />
-            <StatCard
-              label="Kemiskinan terendah"
-              value="3.1"
-              unit="%"
-              badge="Low"
-              badgeType="green"
-              province="Bali"
-              barColor="#639922"
-              barWidth={3.1}
-              icon={<TrendingDown size={14} />}
-            />
-            <StatCard
-              label="Jumlah penduduk miskin"
-              value="25.9"
-              unit="jt"
-              badge="Nasional"
-              badgeType="blue"
-              province="per Maret 2024"
-              barColor="#378ADD"
-              barWidth={60}
-              icon={<Users size={14} />}
-            />
+            <StatCards />
             <div className="card big-card">
               <div className="legend-header">
                 <span className="legend-title">Map legend</span>
@@ -138,6 +95,7 @@ function App() {
           <div className="chart-grid">
             <ChartCard
               title="Tenaga Kerja Formal vs Persentase Kemiskinan"
+              xKey="pct_formal_worker"
               description="Hubungan antara tingkat tenaga kerja formal dengan persentase kemiskinan di setiap provinsi."
               variables={[
                 { name: "X — Tenaga Kerja Formal", explanation: "Persentase penduduk yang bekerja di sektor formal terhadap total angkatan kerja." },
@@ -146,6 +104,7 @@ function App() {
             />
             <ChartCard
               title="Rerata Lama Sekolah vs Persentase Kemiskinan"
+              xKey="avg_schooling_years"
               description="Hubungan antara rata-rata lama sekolah dengan persentase kemiskinan di setiap provinsi."
               variables={[
                 { name: "X — Rerata Lama Sekolah", explanation: "Rata-rata jumlah tahun pendidikan yang diterima oleh penduduk di suatu wilayah." },
@@ -154,6 +113,7 @@ function App() {
             />
             <ChartCard
               title="Indeks Pembangunan Manusia vs Persentase Kemiskinan"
+              xKey="ipm"
               description="Hubungan antara indeks pembangunan manusia dengan persentase kemiskinan di setiap provinsi."
               variables={[
                 { name: "X — Indeks Pembangunan Manusia", explanation: "Indeks yang mengukur tingkat pembangunan manusia berdasarkan pendidikan, kesehatan, dan standar hidup." },
@@ -162,6 +122,7 @@ function App() {
             />
             <ChartCard
               title="Angka Partisipasi Sekolah vs Persentase Kemiskinan"
+              xKey="aps_avg"
               description="Hubungan antara angka partisipasi sekolah dengan persentase kemiskinan di setiap provinsi."
               variables={[
                 { name: "X — Angka Partisipasi Sekolah", explanation: "Persentase penduduk usia sekolah yang sedang bersekolah." },

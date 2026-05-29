@@ -8,26 +8,89 @@ import {
   CartesianGrid,
 } from 'recharts';
 import Modal from './Modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+type ProvinceData = {
+  ipm: number;
+  pct_formal_worker: number;
+  avg_schooling_years: number;
+  ump_rupiah: number;
+  p0_pct: number;
+  aps_avg: number;
+};
 
 type ChartCardProps = {
   title?: string;
   description?: string;
+  xKey: keyof Omit<ProvinceData, 'p0_pct'>;
   variables?: { name: string; explanation: string }[];
 };
 
-const data = [
-  { month: 'Jan', value: 20 },
-  { month: 'Feb', value: 45 },
-  { month: 'Mar', value: 35 },
-  { month: 'Apr', value: 60 },
-  { month: 'May', value: 42 },
-];
+const UMP_MIN = 2169349;
+const UMP_MAX = 5396761;
 
-const numericData = data.map((d, i) => ({ x: i, value: d.value, month: d.month }));
+function umpToColor(ump: number): string {
+  if (!ump) return '#8B0000';
+  const t = Math.max(0, Math.min(1, (ump - UMP_MIN) / (UMP_MAX - UMP_MIN)));
 
-export default function ChartCard({ title, description, variables }: ChartCardProps) {
+  // Gradient stops: dark red → red → orange → amber → yellow
+  const stops = [
+    { t: 0.00, r: 139, g:   0, b:   0 },
+    { t: 0.25, r: 192, g:  57, b:  43 },
+    { t: 0.50, r: 226, g:  75, b:  74 },
+    { t: 0.75, r: 230, g: 126, b:  34 },
+    { t: 1.00, r: 241, g: 196, b:  15 },
+  ];
+
+  let s = stops[0], e = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (t >= stops[i].t && t <= stops[i + 1].t) {
+      s = stops[i];
+      e = stops[i + 1];
+      break;
+    }
+  }
+
+  const seg = (t - s.t) / (e.t - s.t);
+  const r = Math.round(s.r + (e.r - s.r) * seg);
+  const g = Math.round(s.g + (e.g - s.g) * seg);
+  const b = Math.round(s.b + (e.b - s.b) * seg);
+  return `rgb(${r},${g},${b})`;
+}
+
+const CustomDot = (props: any) => {
+  const { cx, cy, payload } = props;
+  return (
+    <circle
+      cx={cx}
+      cy={cy}
+      r={5}
+      fill={umpToColor(payload.ump)}
+      opacity={0.9}
+      stroke="none"
+    />
+  );
+};
+
+export default function ChartCard({ title, description, xKey, variables }: ChartCardProps) {
   const [showInfo, setShowInfo] = useState(false);
+  const [chartData, setChartData] = useState<{ x: number; y: number; province: string; ump: number }[]>([]);
+
+  useEffect(() => {
+    fetch('/indonesia_province_data_2025.json')
+      .then((res) => res.json())
+      .then((json: Record<string, ProvinceData>) => {
+        const points = Object.entries(json)
+          .map(([province, d]) => ({
+            province,
+            x: d[xKey] as number,
+            y: d.p0_pct,
+            ump: d.ump_rupiah,
+          }))
+          .filter((d) => d.x != null && d.y != null);
+        setChartData(points);
+      });
+  }, [xKey]);
 
   return (
     <>
@@ -47,16 +110,13 @@ export default function ChartCard({ title, description, variables }: ChartCardPr
               <XAxis
                 dataKey="x"
                 type="number"
-                domain={[0, data.length - 1]}
-                tickCount={data.length}
-                tickFormatter={(i) => data[i]?.month ?? ''}
                 tick={{ fontSize: 11, fill: '#aaa' }}
                 axisLine={false}
                 tickLine={false}
               />
 
               <YAxis
-                dataKey="value"
+                dataKey="y"
                 tick={{ fontSize: 11, fill: '#aaa' }}
                 axisLine={false}
                 tickLine={false}
@@ -65,19 +125,32 @@ export default function ChartCard({ title, description, variables }: ChartCardPr
 
               <Tooltip
                 cursor={{ strokeDasharray: '3 3' }}
-                formatter={(value) => [value, 'Value']}
-                labelFormatter={(x) => data[x]?.month ?? ''}
-                contentStyle={{
-                  background: '#f4f4f0',
-                  border: '1px solid #deded6',
-                  borderRadius: 8,
-                  fontSize: 12,
-                  fontFamily: 'Georgia, serif',
-                  color: '#444',
+                content={({ payload }) => {
+                  if (!payload?.length) return null;
+                  const d = payload[0].payload;
+                  return (
+                    <div style={{
+                      background: '#f4f4f0',
+                      border: '1px solid #deded6',
+                      borderRadius: 8,
+                      padding: '8px 12px',
+                      fontSize: 12,
+                      fontFamily: 'Georgia, serif',
+                      color: '#444',
+                    }}>
+                      <div style={{ fontWeight: 600, marginBottom: 4 }}>{d.province}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                        <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: 2, background: umpToColor(d.ump), flexShrink: 0 }} />
+                        <span>UMP: Rp {d.ump ? d.ump.toLocaleString('id-ID') : 'N/A'}</span>
+                      </div>
+                      <div>x: {d.x}</div>
+                      <div>P0: {d.y}%</div>
+                    </div>
+                  );
                 }}
               />
 
-              <Scatter data={numericData} fill="#E24B4A" opacity={0.85} r={5} />
+              <Scatter data={chartData} shape={<CustomDot />} />
             </ScatterChart>
           </ResponsiveContainer>
         </div>
@@ -90,9 +163,7 @@ export default function ChartCard({ title, description, variables }: ChartCardPr
         width={420}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          {description && (
-            <p className="poverty-modal-text">{description}</p>
-          )}
+          {description && <p className="poverty-modal-text">{description}</p>}
           {variables && variables.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="legend-section-label">Variables</span>

@@ -1,0 +1,306 @@
+{
+  "Aceh": {
+    "ipm": 76.23,
+    "pct_formal_worker": 36.09,
+    "avg_schooling_years": 10.42,
+    "ump_rupiah": 3685616.0,
+    "p0_pct": 12.33,
+    "aps_avg": 78.23
+  },
+  "Bali": {
+    "ipm": 79.37,
+    "pct_formal_worker": 49.53,
+    "avg_schooling_years": 10.07,
+    "ump_rupiah": 2996561.0,
+    "p0_pct": 3.72,
+    "aps_avg": 80.86
+  },
+  "Banten": {
+    "ipm": 77.25,
+    "pct_formal_worker": 54.88,
+    "avg_schooling_years": 9.82,
+    "ump_rupiah": 2905120.0,
+    "p0_pct": 5.63,
+    "aps_avg": 73.73
+  },
+  "Bengkulu": {
+    "ipm": 75.68,
+    "pct_formal_worker": 34.83,
+    "avg_schooling_years": 9.71,
+    "ump_rupiah": 2670039.0,
+    "p0_pct": 12.08,
+    "aps_avg": 77.74
+  },
+  "DI Yogyakarta": {
+    "ipm": 82.48,
+    "pct_formal_worker": 46.03,
+    "avg_schooling_years": 10.58,
+    "ump_rupiah": 2264081.0,
+    "p0_pct": 10.23,
+    "aps_avg": 86.74
+  },
+  "DKI Jakarta": {
+    "ipm": 85.05,
+    "pct_formal_worker": 63.37,
+    "avg_schooling_years": 11.58,
+    "ump_rupiah": 5396761.0,
+    "p0_pct": 4.28,
+    "aps_avg": 80.12
+  },
+  "Gorontalo": {
+    "ipm": 72.62,
+    "pct_formal_worker": 38.86,
+    "avg_schooling_years": 8.78,
+    "ump_rupiah": 3221731.0,
+    "p0_pct": 13.24,
+    "aps_avg": 74.55
+  },
+  "Jambi": {
+    "ipm": 75.13,
+    "pct_formal_worker": 42.73,
+    "avg_schooling_years": 9.32,
+    "ump_rupiah": 3234535.0,
+    "p0_pct": 7.19,
+    "aps_avg": 73.67
+  },
+  "Jawa Barat": {
+    "ipm": 75.9,
+    "pct_formal_worker": 45.05,
+    "avg_schooling_years": 9.46,
+    "ump_rupiah": 2191232.0,
+    "p0_pct": 7.02,
+    "aps_avg": 74.96
+  },
+  "Jawa Tengah": {
+    "ipm": 74.77,
+    "pct_formal_worker": 41.21,
+    "avg_schooling_years": 8.62,
+    "ump_rupiah": 2169349.0,
+    "p0_pct": 9.48,
+    "aps_avg": 75.5
+  },
+  "Jawa Timur": {
+    "ipm": 76.13,
+    "pct_formal_worker": 38.27,
+    "avg_schooling_years": 8.81,
+    "ump_rupiah": 2305985.0,
+    "p0_pct": 9.5,
+    "aps_avg": 76.57
+  },
+  "Kalimantan Barat": {
+    "ipm": 72.09,
+    "pct_formal_worker": 43.61,
+    "avg_schooling_years": 8.54,
+    "ump_rupiah": 2878286.0,
+    "p0_pct": 6.16,
+    "aps_avg": 72.77
+  },
+  "Kalimantan Selatan": {
+    "ipm": 76.1,
+    "pct_formal_worker": 46.52,
+    "avg_schooling_years": 9.17,
+    "ump_rupiah": 3496195.0,
+    "p0_pct": 3.84,
+    "aps_avg": 74.76
+  },
+  "Kalimantan Tengah": {
+    "ipm": 74.86,
+    "pct_formal_worker": 49.85,
+    "avg_schooling_years": 9.36,
+    "ump_rupiah": 3473621.0,
+    "p0_pct": 5.19,
+    "aps_avg": 72.72
+  },
+  "Kalimantan Timur": {
+    "ipm": 79.39,
+    "pct_formal_worker": 56.78,
+    "avg_schooling_years": 10.3,
+    "ump_rupiah": 3579314.0,
+    "p0_pct": 5.17,
+    "aps_avg": 78.57
+  },
+  "Kalimantan Utara": {
+    "ipm": 74.04,
+    "pct_formal_worker": 51.56,
+    "avg_schooling_years": 9.69,
+    "ump_rupiah": 3580160.0,
+    "p0_pct": 5.54,
+    "aps_avg": 76.57
+  },
+  "Kepulauan Bangka Belitung": {
+    "ipm": 75.26,
+    "pct_formal_worker": 48.71,
+    "avg_schooling_years": 9.09,
+    "ump_rupiah": 3876600.0,
+    "p0_pct": 5.0,
+    "aps_avg": 72.39
+  },
+  "Kepulauan Riau": {
+    "ipm": 80.53,
+    "pct_formal_worker": 65.75,
+    "avg_schooling_years": 10.78,
+    "ump_rupiah": 3623654.0,
+    "p0_pct": 4.44,
+    "aps_avg": 78.29
+  },
+  "Lampung": {
+    "ipm": 73.98,
+    "pct_formal_worker": 35.28,
+    "avg_schooling_years": 9.0,
+    "ump_rupiah": 2893070.0,
+    "p0_pct": 10.0,
+    "aps_avg": 72.84
+  },
+  "Maluku": {
+    "ipm": 74.09,
+    "pct_formal_worker": 33.94,
+    "avg_schooling_years": 10.63,
+    "ump_rupiah": 3141700.0,
+    "p0_pct": 15.38,
+    "aps_avg": 76.06
+  },
+  "Maluku Utara": {
+    "ipm": 72.52,
+    "pct_formal_worker": 35.49,
+    "avg_schooling_years": 9.78,
+    "ump_rupiah": 3408000.0,
+    "p0_pct": 5.81,
+    "aps_avg": 75.28
+  },
+  "Nusa Tenggara Barat": {
+    "ipm": 73.97,
+    "pct_formal_worker": 31.58,
+    "avg_schooling_years": 8.87,
+    "ump_rupiah": 2602931.0,
+    "p0_pct": 11.78,
+    "aps_avg": 76.1
+  },
+  "Nusa Tenggara Timur": {
+    "ipm": 69.89,
+    "pct_formal_worker": 31.56,
+    "avg_schooling_years": 8.88,
+    "ump_rupiah": 2328970.0,
+    "p0_pct": 18.6,
+    "aps_avg": 75.6
+  },
+  "Papua": {
+    "ipm": 74.69,
+    "pct_formal_worker": 47.12,
+    "avg_schooling_years": 10.65,
+    "ump_rupiah": 4285850.0,
+    "p0_pct": 19.16,
+    "aps_avg": 78.69
+  },
+  "Papua Barat": {
+    "ipm": 68.48,
+    "pct_formal_worker": 36.81,
+    "avg_schooling_years": 9.9,
+    "ump_rupiah": 3615000.0,
+    "p0_pct": 20.66,
+    "aps_avg": 76.47
+  },
+  "Papua Barat Daya": {
+    "ipm": 70.55,
+    "pct_formal_worker": 44.34,
+    "avg_schooling_years": 10.6,
+    "ump_rupiah": 3614000.0,
+    "p0_pct": 17.95,
+    "aps_avg": 77.98
+  },
+  "Papua Pegunungan": {
+    "ipm": 54.91,
+    "pct_formal_worker": 4.7,
+    "avg_schooling_years": 4.76,
+    "ump_rupiah": 4285848.0,
+    "p0_pct": 30.03,
+    "aps_avg": 54.15
+  },
+  "Papua Selatan": {
+    "ipm": 69.54,
+    "pct_formal_worker": 34.12,
+    "avg_schooling_years": 8.87,
+    "ump_rupiah": 4285850.0,
+    "p0_pct": 19.71,
+    "aps_avg": 68.87
+  },
+  "Papua Tengah": {
+    "ipm": 60.64,
+    "pct_formal_worker": 15.28,
+    "avg_schooling_years": 6.27,
+    "ump_rupiah": 4285848.0,
+    "p0_pct": 28.9,
+    "aps_avg": 52.02
+  },
+  "Riau": {
+    "ipm": 76.31,
+    "pct_formal_worker": 48.0,
+    "avg_schooling_years": 9.8,
+    "ump_rupiah": 3508776.0,
+    "p0_pct": 6.16,
+    "aps_avg": 76.41
+  },
+  "Sulawesi Barat": {
+    "ipm": 71.16,
+    "pct_formal_worker": 29.37,
+    "avg_schooling_years": 8.91,
+    "ump_rupiah": 3104430.0,
+    "p0_pct": 10.41,
+    "aps_avg": 71.91
+  },
+  "Sulawesi Selatan": {
+    "ipm": 75.92,
+    "pct_formal_worker": 39.55,
+    "avg_schooling_years": 9.38,
+    "ump_rupiah": 3657527.0,
+    "p0_pct": 7.6,
+    "aps_avg": 75.79
+  },
+  "Sulawesi Tengah": {
+    "ipm": 72.82,
+    "pct_formal_worker": 35.43,
+    "avg_schooling_years": 9.38,
+    "ump_rupiah": 2915000.0,
+    "p0_pct": 10.92,
+    "aps_avg": 73.75
+  },
+  "Sulawesi Tenggara": {
+    "ipm": 74.25,
+    "pct_formal_worker": 38.87,
+    "avg_schooling_years": 9.9,
+    "ump_rupiah": 3073552.0,
+    "p0_pct": 10.54,
+    "aps_avg": 77.21
+  },
+  "Sulawesi Utara": {
+    "ipm": 76.32,
+    "pct_formal_worker": 45.44,
+    "avg_schooling_years": 10.1,
+    "ump_rupiah": 3775425.0,
+    "p0_pct": 6.71,
+    "aps_avg": 73.1
+  },
+  "Sumatera Barat": {
+    "ipm": 77.27,
+    "pct_formal_worker": 35.67,
+    "avg_schooling_years": 10.03,
+    "ump_rupiah": 2994193.0,
+    "p0_pct": 5.35,
+    "aps_avg": 80.13
+  },
+  "Sumatera Selatan": {
+    "ipm": 74.76,
+    "pct_formal_worker": 36.87,
+    "avg_schooling_years": 9.28,
+    "ump_rupiah": 3681571.0,
+    "p0_pct": 10.15,
+    "aps_avg": 72.55
+  },
+  "Sumatera Utara": {
+    "ipm": 76.47,
+    "pct_formal_worker": 42.74,
+    "avg_schooling_years": 10.29,
+    "ump_rupiah": 2992559.0,
+    "p0_pct": 7.36,
+    "aps_avg": 76.3
+  }
+}

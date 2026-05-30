@@ -31,21 +31,39 @@ const UMP_MIN = 2169349;
 const UMP_MAX = 5396761;
 
 function umpToColor(ump: number): string {
-  if (!ump) return '#8B0000';
-  const t = Math.max(0, Math.min(1, (ump - UMP_MIN) / (UMP_MAX - UMP_MIN)));
+  if (!ump) return '#440154';
+
+  const t = Math.max(
+    0,
+    Math.min(1, (ump - UMP_MIN) / (UMP_MAX - UMP_MIN))
+  );
+
   const stops = [
-    { t: 0.00, r: 139, g:   0, b:   0 },
-    { t: 0.25, r: 192, g:  57, b:  43 },
-    { t: 0.50, r: 226, g:  75, b:  74 },
-    { t: 0.75, r: 230, g: 126, b:  34 },
-    { t: 1.00, r: 241, g: 196, b:  15 },
+    { t: 0.00, r: 68,  g: 1,   b: 84  },  // deep purple
+    { t: 0.25, r: 59, g: 82,  b: 139 },  // blue
+    { t: 0.50, r: 33, g: 145, b: 140 },  // teal
+    { t: 0.75, r: 94, g: 201, b: 98  },  // green
+    { t: 1.00, r: 253, g: 231, b: 37 },  // yellow
   ];
-  let s = stops[0], e = stops[stops.length - 1];
+
+  let s = stops[0];
+  let e = stops[stops.length - 1];
+
   for (let i = 0; i < stops.length - 1; i++) {
-    if (t >= stops[i].t && t <= stops[i + 1].t) { s = stops[i]; e = stops[i + 1]; break; }
+    if (t >= stops[i].t && t <= stops[i + 1].t) {
+      s = stops[i];
+      e = stops[i + 1];
+      break;
+    }
   }
+
   const seg = (t - s.t) / (e.t - s.t);
-  return `rgb(${Math.round(s.r + (e.r - s.r) * seg)},${Math.round(s.g + (e.g - s.g) * seg)},${Math.round(s.b + (e.b - s.b) * seg)})`;
+
+  return `rgb(
+    ${Math.round(s.r + (e.r - s.r) * seg)},
+    ${Math.round(s.g + (e.g - s.g) * seg)},
+    ${Math.round(s.b + (e.b - s.b) * seg)}
+  )`;
 }
 
 const CustomDot = (props: any) => {

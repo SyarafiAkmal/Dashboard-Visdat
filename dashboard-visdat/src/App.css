@@ -211,14 +211,24 @@ body {
 
 .charts-row {
   display: flex;
-  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.chart-grid-4 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
-.chart-grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+.umr-card {
+  width: 320px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 /* CHART CARD */
@@ -408,25 +418,18 @@ body {
 
 /* UMR LEGEND */
 
-.bottom-right-card {
+.umr-content {
   display: flex;
-  padding: 16px 20px;
-  flex-direction: column;
-  height: fit-content;
-  margin: 0 10%;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
 }
 
-.umr-legend {
-  display: flex;
-  gap: 32px;
-  width: 100%;
-}
-
-.umr-legend-left {
+.umr-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex-shrink: 0;
+  max-width: 145px;
 }
 
 .umr-legend-title {
@@ -442,53 +445,70 @@ body {
   font-family: 'Georgia', serif;
   font-style: italic;
   color: #888;
-  max-width: 120px;
   line-height: 1.5;
 }
 
-.umr-legend-right {
+/* RIGHT SCALE */
+
+.umr-scale {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-
-.umr-gradient-wrap {
-  display: flex;
   align-items: center;
-  gap: 12px;
+  flex-shrink: 0;
 }
 
-.umr-gradient-bar {
-  flex: 1;
-  height: 14px;
-  border-radius: 3px;
-  background: linear-gradient(to right, #8B0000, #C0392B, #E24B4A, #E67E22, #F39C12, #F1C40F);
-}
-
-.umr-gradient-label {
+.umr-top-label,
+.umr-bottom-label {
   font-size: 10px;
   color: #888;
   font-style: italic;
   font-family: 'Georgia', serif;
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.umr-gradient-ticks {
+.umr-scale-body {
   display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.umr-gradient-bar-vertical {
+  width: 14px;
+  height: 130px;
+  border-radius: 999px;
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    to top,
+    #440154,
+    #3b528b,
+    #21918c,
+    #5ec962,
+    #fde725
+  );
+}
+
+.umr-ticks {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 0 2px;
 }
 
 .umr-tick {
   font-size: 10px;
   color: #888;
+  line-height: 1;
+  white-space: nowrap;
 }
 
+/* FOOTER */
+
 .umr-footer {
-  margin-top: 10px;
-  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  margin-top: 12px;
   border-top: 1px solid #deded6;
 }
 

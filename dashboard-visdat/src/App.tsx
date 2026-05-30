@@ -37,7 +37,7 @@ function App() {
 
         {/* BARIS 3 — SCATTER PLOTS + UMR */}
         <section className="charts-row">
-          <div className="chart-grid-3">
+          <div className="chart-grid-4">
             <ChartCard
               title="Tenaga Kerja Formal vs Persentase Kemiskinan"
               xKey="pct_formal_worker"
@@ -69,30 +69,62 @@ function App() {
               ]}
             />
           </div>
+          <div className="card umr-card">
+            <div className="umr-content">
+              <div className="umr-info">
+                <span className="umr-legend-title">
+                  UMR Indicator
+                </span>
 
-          <div className="card bottom-right-card">
-            <div className="umr-legend">
-              <div className="umr-legend-left">
-                <span className="umr-legend-title">UMR Indicator</span>
-                <span className="umr-legend-subtitle">Upah Minimum Regional per province</span>
+                <span className="umr-legend-subtitle">
+                  Upah Minimum Regional per province
+                </span>
               </div>
-              <div className="umr-legend-right">
-                <div className="umr-gradient-wrap">
-                  <span className="umr-gradient-label">Low income</span>
-                  <div className="umr-gradient-bar" />
-                  <span className="umr-gradient-label">High income</span>
+
+              <div className="umr-scale">
+                <span className="umr-top-label">
+                  High income
+                </span>
+
+                <div className="umr-scale-body">
+                  <div className="umr-gradient-bar-vertical" />
+
+                  <div className="umr-ticks">
+                    {[
+                      "Rp 1,5jt",
+                      "Rp 2jt",
+                      "Rp 2,5jt",
+                      "Rp 3jt",
+                      "Rp 3,5jt",
+                      "Rp 4jt+",
+                    ].map((t) => (
+                      <span key={t} className="umr-tick">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="umr-gradient-ticks">
-                  {["Rp 1,5jt", "Rp 2jt", "Rp 2,5jt", "Rp 3jt", "Rp 3,5jt", "Rp 4jt+"].map((t) => (
-                    <span key={t} className="umr-tick">{t}</span>
-                  ))}
-                </div>
+
+                <span className="umr-bottom-label">
+                  Low income
+                </span>
               </div>
             </div>
+
             <div className="umr-footer">
-              <button className="legend-btn" onClick={() => setShowInsightModal(true)}>
+              <button
+                className="legend-btn"
+                onClick={() => setShowInsightModal(true)}
+              >
                 Chart Insight
-                <Lightbulb size={13} style={{ marginLeft: 5, marginBottom: 2, verticalAlign: "middle" }} />
+                <Lightbulb
+                  size={13}
+                  style={{
+                    marginLeft: 5,
+                    marginBottom: 2,
+                    verticalAlign: "middle",
+                  }}
+                />
               </button>
             </div>
           </div>

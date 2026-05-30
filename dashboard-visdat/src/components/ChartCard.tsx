@@ -81,6 +81,11 @@ export default function ChartCard({ title, description, insight, xKey, variables
     fetch('/indonesia_province_data_2025.json')
       .then((res) => res.json())
       .then((json: Record<string, ProvinceData>) => {
+        const excludedProvinces = [
+          'Papua Pegunungan',
+          'Papua Tengah',
+        ];
+
         const points = Object.entries(json)
           .map(([province, d]) => ({
             province,
@@ -88,7 +93,13 @@ export default function ChartCard({ title, description, insight, xKey, variables
             y: d.p0_pct,
             ump: d.ump_rupiah,
           }))
-          .filter((d) => d.x != null && d.y != null);
+          .filter(
+            (d) =>
+              d.x != null &&
+              d.y != null &&
+              !excludedProvinces.includes(d.province)
+          );
+
         setChartData(points);
       });
   }, [xKey]);

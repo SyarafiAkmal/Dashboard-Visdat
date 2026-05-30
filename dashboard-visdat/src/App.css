@@ -480,11 +480,11 @@ body {
 
   background: linear-gradient(
     to top,
-    #440154,
-    #3b528b,
-    #21918c,
+    #fde725,
     #5ec962,
-    #fde725
+    #21918c,
+    #3b528b,
+    #440154, 
   );
 }
 

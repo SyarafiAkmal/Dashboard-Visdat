@@ -83,7 +83,7 @@ function App() {
 
               <div className="umr-scale">
                 <span className="umr-top-label">
-                  High income
+                  Low income
                 </span>
 
                 <div className="umr-scale-body">
@@ -106,7 +106,7 @@ function App() {
                 </div>
 
                 <span className="umr-bottom-label">
-                  Low income
+                  High income
                 </span>
               </div>
             </div>

@@ -125,10 +125,7 @@ function App() {
             jumlah penduduk miskin terhadap total jumlah penduduk di suatu wilayah.
           </p>
           <p className="poverty-modal-text">
-            Badan Pusat Statistik (BPS) menghitung Garis Kemiskinan berdasarkan kemampuan seseorang
-            dalam memenuhi kebutuhan dasar, baik berupa makanan maupun non-makanan. Penduduk yang
-            rata-rata pengeluaran per kapita per bulannya berada di bawah garis tersebut
-            dikategorikan sebagai penduduk miskin.
+            Badan Pusat Statistik (BPS) menghitung Garis Kemiskinan berdasarkan pendekatan kebutuhan dasar, yaitu nilai minimum pengeluaran yang dibutuhkan seseorang untuk memenuhi kebutuhan makanan dan non-makanan dasar. Kebutuhan makanan dihitung berdasarkan standar konsumsi minimum setara 2.100 kilokalori per orang per hari, sedangkan kebutuhan non-makanan mencakup aspek seperti perumahan, pendidikan, kesehatan, pakaian, listrik, dan transportasi. Penduduk dengan rata-rata pengeluaran per kapita per bulan di bawah garis tersebut dikategorikan sebagai penduduk miskin. Secara nasional, batas Garis Kemiskinan berada di kisaran Rp600 ribu per kapita per bulan, sehingga individu dengan pengeluaran rata-rata di bawah nilai tersebut dianggap belum mampu memenuhi kebutuhan dasar minimum menurut standar BPS.
           </p>
         </div>
       </Modal>

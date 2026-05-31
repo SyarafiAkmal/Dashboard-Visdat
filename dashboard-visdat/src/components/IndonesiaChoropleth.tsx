@@ -200,7 +200,7 @@ export default function IndonesiaChoropleth({ onShowPovertyModal }: Props) {
             </div>
             {onShowPovertyModal && (
               <button className="map-poverty-btn" onClick={onShowPovertyModal}>
-                How is Poverty Percentage Calculated?
+                Bagaimana Persentase Kemiskinan Dihitung?
                 <ExternalLink size={10} style={{ marginLeft: 4, verticalAlign: "middle" }} />
               </button>
             )}

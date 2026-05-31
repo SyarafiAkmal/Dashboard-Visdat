@@ -60,7 +60,7 @@ export default function SearchBar() {
       <div className="search-container" ref={containerRef}>
         <input
           type="text"
-          placeholder="Search province..."
+          placeholder="Cari provinsi..."
           className="search-input"
           value={query}
           onChange={(e) => { setQuery(e.target.value); setShowDropdown(true); }}

@@ -91,7 +91,7 @@ export default function StatCards() {
         label="Rata-rata kemiskinan"
         value={stats.avg.toString()}
         unit="%"
-        badge="Moderate"
+        badge="Rata-rata"
         badgeType="amber"
         province={`${stats.total} provinsi`}
         barColor="#888780"
@@ -102,7 +102,7 @@ export default function StatCards() {
         label="Kemiskinan tertinggi"
         value={stats.max.value.toString()}
         unit="%"
-        badge="Critical"
+        badge="Tertinggi"
         badgeType="red"
         province={stats.max.province}
         barColor="#E24B4A"
@@ -113,7 +113,7 @@ export default function StatCards() {
         label="Kemiskinan terendah"
         value={stats.min.value.toString()}
         unit="%"
-        badge="Low"
+        badge="Terendah"
         badgeType="green"
         province={stats.min.province}
         barColor="#639922"

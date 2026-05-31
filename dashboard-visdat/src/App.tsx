@@ -73,17 +73,17 @@ function App() {
             <div className="umr-content">
               <div className="umr-info">
                 <span className="umr-legend-title">
-                  UMR Indicator
+                  Indikator Upah Minimum Regional
                 </span>
 
                 <span className="umr-legend-subtitle">
-                  Upah Minimum Regional per province
+                  Upah Minimum Regional per provinsi
                 </span>
               </div>
 
               <div className="umr-scale">
                 <span className="umr-top-label">
-                  Low income
+                  UMR (rp)
                 </span>
 
                 <div className="umr-scale-body">
@@ -91,12 +91,10 @@ function App() {
 
                   <div className="umr-ticks">
                     {[
-                      "Rp 1,5jt",
-                      "Rp 2jt",
-                      "Rp 2,5jt",
-                      "Rp 3jt",
-                      "Rp 3,5jt",
-                      "Rp 4jt+",
+                      "1,5jt",
+                      "2,5jt",
+                      "3,5jt",
+                      "4,5jt+",
                     ].map((t) => (
                       <span key={t} className="umr-tick">
                         {t}
@@ -116,7 +114,7 @@ function App() {
                 className="legend-btn"
                 onClick={() => setShowInsightModal(true)}
               >
-                Chart Insight
+                Insight
                 <Lightbulb
                   size={13}
                   style={{

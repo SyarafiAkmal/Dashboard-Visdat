@@ -103,9 +103,6 @@ function App() {
                   </div>
                 </div>
 
-                <span className="umr-bottom-label">
-                  High income
-                </span>
               </div>
             </div>
 

@@ -128,7 +128,7 @@ export default function StatCards() {
         badgeType="blue"
         province="per Maret 2025"
         barColor="#378ADD"
-        barWidth={60}
+        barWidth={9}
         icon={<Users size={14} />}
       />
     </>
